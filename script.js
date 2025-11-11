@@ -1,6 +1,5 @@
-// Step 1: Create the Car constructor
 function Car(make, model) {
-    this.make = make; 
+    this.make = make;
     this.model = model;
 }
 
@@ -9,16 +8,18 @@ Car.prototype.getMakeModel = function() {
 };
 
 function SportsCar(make, model, topSpeed) {
-    Car.call(this, make, model); 
-    this.topSpeed = topSpeed; 
+    Car.call(this, make, model); // Call the Car constructor
+    this.topSpeed = topSpeed;
 }
 
+// Set up inheritance from Car
+SportsCar.prototype = Object.create(Car.prototype);
+SportsCar.prototype.constructor = SportsCar;
+
+// Add the getTopSpeed method to SportsCar's prototype
 SportsCar.prototype.getTopSpeed = function() {
     return this.topSpeed;
 };
-
-SportsCar.prototype = Object.create(Car.prototype); 
-SportsCar.prototype.constructor = SportsCar; 
 
 // Do not change the code below
 window.Car = Car;
